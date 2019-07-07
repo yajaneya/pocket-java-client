@@ -25,7 +25,7 @@ public class ClientController {
     User myUser;
     Connector conn;
     List<String> contactList;
-    List<CFXListElement> contactListOfCards;
+    List<CFXListElement<User>> contactListOfCards;
     List<Message> conversation;
 
     DataBaseService dbService;
@@ -134,7 +134,7 @@ public class ClientController {
         messageService.setSession(session);
     }
 
-    public List<CFXListElement> getContactListOfCards() {
+    public List<CFXListElement<User>> getContactListOfCards() {
         return contactListOfCards;
     }
 

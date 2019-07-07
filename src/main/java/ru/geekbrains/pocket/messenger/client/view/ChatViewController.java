@@ -38,6 +38,7 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
 import ru.geekbrains.pocket.messenger.client.view.customFX.*;
 import ru.geekbrains.pocket.messenger.client.model.Group;
+import ru.geekbrains.pocket.messenger.database.entity.EntityImpl;
 import ru.geekbrains.pocket.messenger.database.entity.Message;
 import ru.geekbrains.pocket.messenger.database.entity.User;
 import ru.geekbrains.pocket.messenger.database.entity.UserProfile;
@@ -68,7 +69,7 @@ public class ChatViewController implements Initializable {
     private WebView messageWebView;
 
     @FXML
-    private JFXListView<CFXListElement> contactListView;
+    private JFXListView<CFXListElement<ru.geekbrains.pocket.messenger.database.entity.Group>> contactListView;
 
     @FXML
     private CustomTextArea messageField;
@@ -116,7 +117,7 @@ public class ChatViewController implements Initializable {
     private JFXListView<?> groupListView;
 
     @FXML
-    private JFXListView<CFXListElement> groupSearchListView;
+    private JFXListView<CFXListElement<ru.geekbrains.pocket.messenger.database.entity.Group>> groupSearchListView;
 
     @FXML
     private JFXListView<CFXListElement> listViewAddToGroup;
@@ -153,7 +154,7 @@ public class ChatViewController implements Initializable {
     //
     private WebEngine webEngine;
 
-    private ObservableList<CFXListElement> contactsObservList;
+    private ObservableList<CFXListElement<EntityImpl>> contactsObservList;
 
     private ClientController clientController;
 

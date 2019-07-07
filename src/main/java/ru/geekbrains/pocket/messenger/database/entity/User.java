@@ -16,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements EntityImpl{
 
     public enum UFields {
         id, email, createdAt, profile, sentMess, receivedMess
@@ -78,6 +78,16 @@ public class User {
     public void setUserName(String name) {
         if (profile == null) profile = new UserProfile();
         profile.setUserName(name);
+    }
+
+    @Override
+    public String getName() {
+        return getUserName();
+    }
+
+    @Override
+    public String getLastMessage() {
+        return null;
     }
 
     @Override

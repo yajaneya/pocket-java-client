@@ -1,5 +1,6 @@
 package ru.geekbrains.pocket.messenger.client.view.customFX;
 
+import ru.geekbrains.pocket.messenger.database.entity.EntityImpl;
 import ru.geekbrains.pocket.messenger.database.entity.User;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.Objects;
 
-public class CFXListElement extends AnchorPane {
+public class CFXListElement <T extends EntityImpl> extends AnchorPane {
 
     @FXML
     private Text topic;
@@ -46,7 +47,7 @@ public class CFXListElement extends AnchorPane {
 
     private String imageURL;
 
-    private User user;
+    private T entity;
 
 
     public CFXListElement() {
@@ -65,9 +66,9 @@ public class CFXListElement extends AnchorPane {
         setOnlineStatus(false);
     }
 
-    public CFXListElement(User user) {
+    public CFXListElement(T entity) {
         this();
-        setUser(user);
+        setEntity(entity);
     }
 
     public String getTopic(){
@@ -126,13 +127,13 @@ public class CFXListElement extends AnchorPane {
         unreadMessages.setVisible(false);
     }
 
-    public User getUser(){
-        return this.user;
+    public T getEntity(){
+        return this.entity;
     }
 
-    public void setUser(User user){
-        this.user = user;
-        this.topic.setText(user.getUserName());
+    public void setEntity (T entity){
+        this.entity = entity;
+        this.topic.setText(entity.getName());
 
     }
 
@@ -143,7 +144,7 @@ public class CFXListElement extends AnchorPane {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.user);
+        hash = 79 * hash + Objects.hashCode(this.entity);
         return hash;
     }
 
@@ -159,6 +160,6 @@ public class CFXListElement extends AnchorPane {
             return false;
         }
         final CFXListElement other = (CFXListElement) obj;
-        return Objects.equals(this.user, other.user);
+        return Objects.equals(this.entity, other.entity);
     }
 }

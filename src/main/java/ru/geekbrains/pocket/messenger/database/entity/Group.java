@@ -15,7 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "groups")
-public class Group {
+public class Group implements EntityImpl{
 
     @Id
     @Column
@@ -81,5 +81,15 @@ public class Group {
                 ", invitationCode=" + invitationCode +
                 ", isPublic=" + isPublic +
                 '}';
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getLastMessage() {
+        return null;
     }
 }

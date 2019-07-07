@@ -1,8 +1,10 @@
 package ru.geekbrains.pocket.messenger.client.model;
 
+import ru.geekbrains.pocket.messenger.database.entity.EntityImpl;
+
 import java.util.List;
 
-public class Group {
+public class Group implements EntityImpl {
     private String gid;
     private String group_name;
     private List<Integer> users;
@@ -31,5 +33,15 @@ public class Group {
 
     public List<Integer> getUsers() {
         return users;
+    }
+
+    @Override
+    public String getName() {
+        return getGroup_name();
+    }
+
+    @Override
+    public String getLastMessage() {
+        return null;
     }
 }
